@@ -1,0 +1,18 @@
+Hi, this is a color detection program.
+INFO:
+    python 3.10
+    pandas 1.3.4
+    opencv-python 4.5.4
+    wheel 0.36.2
+    pip 21.1.2
+    setuptools 57.0.0
+    six 1.16.0
+    beautifulsoup4 4.10.0
+    requests 2.26.0
+
+pars_data_color.py - this file is needed to get a dataset with Russian translation of color names.
+The English dataset was found ready.
+
+program.py - this is the main file, I plan to add Kivy, and the ability to interact with the webcam.
+
+And the most important thing, don't create file with name "img.jpg"
