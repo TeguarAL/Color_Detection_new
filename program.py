@@ -64,21 +64,43 @@ def detection_RGB(event, x, y, flags, param):
 
 # input data
 df = select_language()
-img = open_img(input('input img/url/....'))
-cv2.namedWindow('image')
-cv2.setMouseCallback('image', detection_RGB)
+tp_file = (input('input img/url/web'))
+if ('https' or 'jpg' or 'png') in tp_file:
+    img = open_img(tp_file)
+    cv2.namedWindow('image')
+    cv2.setMouseCallback('image', detection_RGB)
 
 
-# output info
-while True:
-    cv2.imshow("image", img)
-    if mouse_click:
-        text = get_color(r, g, b)
-        print(text)
-        mouse_click = False
-    # if you need close program => "esc"
-    if cv2.waitKey(1) == 27:
-        break
+    # output info
+    while True:
+        cv2.imshow("image", img)
+        if mouse_click:
+            text = get_color(r, g, b)
+            print(text)
+            mouse_click = False
+        # if you need close program => "esc"
+        if cv2.waitKey(1) == 27:
+            break
 
-os.remove("img.jpg")
+    os.remove("img.jpg")
+
+elif tp_file == 'web':
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    cv2.namedWindow('image')
+    cv2.setMouseCallback('image', detection_RGB)
+
+    while True:
+        _, img = cap.read()
+        cv2.imshow("image", img)
+        if mouse_click:
+            text = get_color(r, g, b)
+            print(text)
+            mouse_click = False
+        key = cv2.waitKey(1)
+        if cv2.waitKey(1) == 27:
+            break
+    cap.release()
+
+
+cv2.destroyAllWindows()
 # maybe I'll make an API on Kivy
